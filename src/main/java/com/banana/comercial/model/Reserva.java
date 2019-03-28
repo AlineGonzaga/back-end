@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
@@ -15,15 +16,19 @@ public class Reserva {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	//@NotEmpty
+	@NotEmpty
 	//@Size(max = 50)
 	@Column(name = "local_filial")
 	private String localFilial;
+	
     private int sala;
+	@NotEmpty
     @Column(name = "data_hora_inicial")
     private String dataHoraInicial;
+	@NotEmpty
     @Column(name = "data_hora_final")
     private String dataHoraFinal;
+	@NotEmpty
     private String responsavel;
     private boolean cafe;
     private int quantidade;

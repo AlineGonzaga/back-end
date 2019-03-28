@@ -9,6 +9,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -27,7 +28,7 @@ import com.banana.comercial.model.Reserva;
 import com.banana.comercial.repository.ReservaRepository;
 
 @RestController
-//@RequestMapping("/reservas")
+@CrossOrigin
 public class ReservaController {
 
 	//@Autowired
@@ -42,33 +43,19 @@ public class ReservaController {
 		return reservas.findAll();
 	}
 	
-	//@GetMapping("/{id}")
-	//@RequestMapping(value = "/getuser/{userId}", method = RequestMethod.POST, produces = "application/json")
-	//public @ResponseBody Record getRecord(@PathVariable Integer userId)
 	@GetMapping("/reservas/{id}")
 	Optional<Reserva> one(@PathVariable Long id) {
 
 		return reservas.findById(id);
 	}
 
-	//public ResponseEntity<Reserva> buscar(Long id) {
-		//Optional<Reserva> reserva  =  reservas.findById(id);
-		
-//		if (!reserva.isPresent()) {
-//			return ResponseEntity.notFound().build();
-//		}
-		
-	//	return ResponseEntity.ok(reserva.get());
-	// }
-	
-	//	Optional<Reserva> findBySalaAndlocalFilialAndDataHoraInicialAndDataHoraFinal(String sala, int localFilial, String DataHoraInicial, String DataHoraFinal);
 	@PostMapping("/reservas")
 	@ResponseStatus(HttpStatus.CREATED)
 	public Reserva adicionarReserva(@Valid @RequestBody Reserva reserva) {
 		Optional<Reserva> reservaExistente  =  reservas.findBySalaAndLocalFilialAndDataHoraInicialAndDataHoraFinal(reserva.getSala(), reserva.getLocalFilial(), reserva.getDataHoraInicial(), reserva.getDataHoraFinal());
 		
 		if(reservaExistente.isPresent()) {
-			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Já existe");
+			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Já existe uma reserva com esse horário, sala e local");
 			
 		}
 		return reservas.save(reserva);
