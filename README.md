@@ -30,10 +30,14 @@ Para testar a api foi utilizada a ferramenta Postman.
 A API Restful apresentada nesse projeto, faz essas operações com sucesso:
 
  Edição com id método put http://localhost:8080/reservas/id
+ 
  Exclusão com id método delete http://localhost:8080/reservas/id
+ 
  Inclusão de reserva método post http://localhost:8080/reservas
+ 
  Listagem de reservas: método get http://localhost:8080/reservas
+ 
  Buscar apenas um elemento no banco de dados: método get http://localhost:8080/reservas/id
 
 
-E controle de versão utilizado foi GIT, por linha de comando.
+O controle de versão utilizado foi GIT, por linha de comando.
