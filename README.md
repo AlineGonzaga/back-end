@@ -25,7 +25,7 @@ Web
   
   
 
-A IDE utilizada foi a Spring Tool Suite. O banco de dado relacional MySql.
+ A IDE utilizada foi a Spring Tool Suite. O banco de dado relacional MySql.
 
 Para testar a api foi utilizada a ferramenta Postman.
 
