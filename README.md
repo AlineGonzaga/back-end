@@ -22,6 +22,8 @@ JPA
 Web
 
   Para desenvolver api Restful.
+  
+  
 
 A IDE utilizada foi a Spring Tool Suite. O banco de dado relacional MySql.
 
